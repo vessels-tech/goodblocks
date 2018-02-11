@@ -30,7 +30,7 @@ class Popup extends Component {
 		console.log(maybeValidLink);
 
 		return (
-			<a href={`https://${maybeValidLink}`}>{link}</a>
+			<a target="blank" href={`https://${maybeValidLink}`}>{link}</a>
 		);
 	}
 

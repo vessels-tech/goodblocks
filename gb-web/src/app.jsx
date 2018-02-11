@@ -98,8 +98,8 @@ class App extends Component {
 			      <div className="tc mt2 mt3-m mt4-l ph3">
 			        <h1 className={`f2 f1-l fw2 ${fontColorA} mb0 lh-title`}>GoodBlocks</h1>
 			        <h2 className={`fw1 f3 ${fontColorB} mt3`}>Browse Blockchain for Social Good Projects from the Master List</h2>
-			        <h2 className={`fw1 f3 ${fontColorB} mt3`}>Crowdsourced from the <a className={`fw1 ${fontColorB}`} href="https://docs.google.com/spreadsheets/d/14BPQIqnDUTyinkp9eJ7bwYwsg22RJz0AVU9vOSSU94o/edit#gid=1835238919">Google Doc</a></h2>
-			        <h3 className={`fw1 f5 ${fontColorB}`}>Made with ❤️ by Vessels Tech | <a className={`fw1 f6 ${fontColorB}`} href="https://vesselstech.com">vesselstech.com</a></h3>
+			        <h2 className={`fw1 f3 ${fontColorB} mt3`}>Crowdsourced from the <a className={`fw1 ${fontColorB}`} target="blank" href="https://docs.google.com/spreadsheets/d/14BPQIqnDUTyinkp9eJ7bwYwsg22RJz0AVU9vOSSU94o/edit#gid=1835238919">Google Doc</a></h2>
+			        <h3 className={`fw1 f5 ${fontColorB}`}>Made with ❤️ by Vessels Tech | <a className={`fw1 f6 ${fontColorB}`} target="blank"  href="https://vesselstech.com">vesselstech.com</a></h3>
 			      </div>
 			    </div>
 			  </div>
@@ -327,9 +327,9 @@ class App extends Component {
 	getSupportSection() {
 
 		return (
-			<section className="sans-serif">
-				<div className="tc mt2 mt3-m mt4-l ph3">
-					<h3 className={`fw1 f5 ${fontColorB}`}>Please support further development of this site:</h3>
+			<section className="sans-serif mv2 mtv-m mv4-l ph3 h-100">
+				<div className="tc ph3">
+					<h3 className={`fw1 f5 ${fontColorB}`}>Want to support development of this site? Thanks!</h3>
 					<h3 className={`fw1 f5 ${fontColorB}`}><b>BTC:</b> 18yH2czzkyv4j1FXEY3KKSWSjCm56bmgES</h3>
 					<h3 className={`fw1 f5 ${fontColorB}`}><b>ETH:</b> 0xb85b76189226b25884c225185805b90d53a8779e</h3>
 				</div>
