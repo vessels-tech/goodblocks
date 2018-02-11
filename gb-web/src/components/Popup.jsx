@@ -56,12 +56,12 @@ class Popup extends Component {
 		const emailFormatted = this.formatOrPlaceholder(contactEmail);
 
 		return (
-			<div className="sans-serif w-100 h-100 bg-near-white">
-				  <h1 className="fw3 f4 bg-near-white black-60 mv0 pv2 ph3">{orgInit}</h1>
-					<div className="fl w-100 w-50-ns pa4 b">
+			<div className="sans-serif w-100 h-100">
+				  <h1 className="fw3 f4 black-60 mv0 pv2 ph3">{orgInit}</h1>
+					<div className="fl w-100 w-50-ns ph4 pv4-ns pa1 b">
 						<p className="fw6 f6 f5-ns lh-copy measure">{description}</p>
 					</div>
-					<div className="fl w-100 w-50-ns pa4 ">
+					<div className="fl w-100 w-50-ns ph4 pv4-ns pa1 ">
 						<p><b>Primary Sector:</b> {primarySectorFormatted}</p>
 						<p><b>Tech:</b> {techFormatted}</p>
 						<p><b>Status:</b> {statusFormatted}</p>

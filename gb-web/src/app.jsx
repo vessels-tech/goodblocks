@@ -22,6 +22,8 @@ import UpArrow from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
 import Popup from './components/Popup'
 import Modal from 'react-modal'
 import { Debounce } from 'react-throttle';
+import windowDimensions from 'react-window-dimensions';
+import debounce from 'lodash.debounce';
 
 import ListLoader from 'api/ListLoader.js'
 
@@ -176,6 +178,8 @@ class App extends Component {
 	}
 
 	formatTableRow(row) {
+		const { windowWidth } = this.props;
+
 		return (
 			<TableRow
 				key={row.uniqueId}
@@ -183,7 +187,7 @@ class App extends Component {
 				<TableRowColumn
 					>{row.companyName}</TableRowColumn>
 				<TableRowColumn>{row.industry}</TableRowColumn>
-				<TableRowColumn>{row.region}</TableRowColumn>
+				{windowWidth < 600 ? null : <TableRowColumn>{row.region}</TableRowColumn> }
 			</TableRow>
 		)
 	}
@@ -230,6 +234,7 @@ class App extends Component {
 
 	getList() {
 		const { list, visibleRowCount } = this.state;
+		const { windowWidth } = this.state;
 
 		if (!list) {
 			return (
@@ -257,6 +262,8 @@ class App extends Component {
 			.slice(0, visibleRowCount);
 		const shouldHideMoreButton = filteredList.length < visibleRowCount;
 
+    console.log(`Screen width is: ${this.props.windowWidth}`);
+
 		return (
 			<section className="bg-white-80 mw-80-ns w-80-ns center mt4">
 				<Table
@@ -265,8 +272,8 @@ class App extends Component {
 					style={{
 						backgroundColor:null,
 						fontFamily: 'sans-serif'
-
 					}}
+
 					>
 	        <TableHeader
 						displayRowCheckbox={false}
@@ -293,15 +300,17 @@ class App extends Component {
 									Industry
 								</FlatButton>
 							</TableHeaderColumn>
-	            <TableHeaderColumn>
-								<FlatButton
-									primary
-									onClick={() => this.updateSortOptions('region')}
-						      icon={this.getSortIconForName('region')}
-								>
-									Region
-								</FlatButton>
-							</TableHeaderColumn>
+							{ windowWidth < 600 ? null :
+		            <TableHeaderColumn>
+									<FlatButton
+										primary
+										onClick={() => this.updateSortOptions('region')}
+							      icon={this.getSortIconForName('region')}
+									>
+										Region
+									</FlatButton>
+								</TableHeaderColumn>
+							}
 	          </TableRow>
 	        </TableHeader>
 	        <TableBody
@@ -330,9 +339,9 @@ class App extends Component {
 		return (
 			<section className="sans-serif mv2 mtv-m mv4-l ph3 h-100">
 				<div className="tc ph3">
-					<h3 className={`fw1 f5 ${fontColorB}`}>Want to support development of this site? Thanks!</h3>
-					<h3 className={`fw1 f5 ${fontColorB}`}><b>BTC:</b> 18yH2czzkyv4j1FXEY3KKSWSjCm56bmgES</h3>
-					<h3 className={`fw1 f5 ${fontColorB}`}><b>ETH:</b> 0xb85b76189226b25884c225185805b90d53a8779e</h3>
+					<h3 className={`fw1 f7 f5-ns ${fontColorB}`}>Want to support development of this site? Aww... thanks!</h3>
+					<h3 className={`fw1 f7 f5-ns ${fontColorB}`}><b>BTC:</b> 18yH2czzkyv4j1FXEY3KKSWSjCm56bmgES</h3>
+					<h3 className={`fw1 f7 f5-ns ${fontColorB}`}><b>ETH:</b> 0xb85b76189226b25884c225185805b90d53a8779e</h3>
 				</div>
 
 			</section>
@@ -406,7 +415,9 @@ class App extends Component {
 				borderWidth: '0',
 				border: 'none',
 				overflow: 'auto',
-		 		WebkitOverflowScrolling: 'touch',
+				backgroundColor: '#F4F4F4',
+		 		// WebkitOverflowScrolling: 'touch',
+				height: '20em'
 		  }
 		};
 
@@ -437,4 +448,7 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default windowDimensions({
+  take: () => ({ windowWidth: window.innerWidth }),
+  debounce: onResize => debounce(onResize, 100),
+})(App);
