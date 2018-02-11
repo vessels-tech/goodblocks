@@ -96,9 +96,10 @@ class App extends Component {
 			        </div>
 			      </nav>
 			      <div className="tc mt2 mt3-m mt4-l ph3">
-			        <h1 className={`f2 f1-l fw2 ${fontColorA} mb0 lh-title`}>GoodBlocks</h1>
+			        <h1 className={`f1 f1-l fw2 ${fontColorA} mb0 lh-title`}>GoodBlocks</h1>
 			        <h2 className={`fw1 f3 ${fontColorB} mt3`}>Browse Blockchain for Social Good Projects from the Master List</h2>
 			        <h2 className={`fw1 f3 ${fontColorB} mt3`}>Crowdsourced from the <a className={`fw1 ${fontColorB}`} target="blank" href="https://docs.google.com/spreadsheets/d/14BPQIqnDUTyinkp9eJ7bwYwsg22RJz0AVU9vOSSU94o/edit#gid=1835238919">Google Doc</a></h2>
+							<br/>
 			        <h3 className={`fw1 f5 ${fontColorB}`}>Made with ❤️ by Vessels Tech | <a className={`fw1 f6 ${fontColorB}`} target="blank"  href="https://vesselstech.com">vesselstech.com</a></h3>
 			      </div>
 			    </div>
