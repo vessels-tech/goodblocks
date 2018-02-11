@@ -3,6 +3,12 @@ import GetSheetDone from 'get-sheet-done';
 
 const DOC_KEY = "14BPQIqnDUTyinkp9eJ7bwYwsg22RJz0AVU9vOSSU94o";
 
+//a list of manually filtered ids:
+const excludedIds = [
+  //just an example
+  '210'
+];
+
 //map the rows to fields
 const rowFormat = {
 	id: 0,
@@ -90,6 +96,18 @@ const load = () => {
 				if (mappedRow.description.length < 5) {
 					return false;
 				}
+
+        if (!mappedRow.id || mappedRow.id.length === 0) {
+          return false;
+        }
+
+        if (mappedRow.id === "ID") {
+          return false;
+        }
+
+        if (excludedIds.indexOf(mappedRow.id) > -1) {
+          return false;
+        }
 
 				return true;
 			});
