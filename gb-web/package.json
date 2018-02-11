@@ -18,6 +18,7 @@
   "license": "MIT",
   "homepage": "https://github.com/ReactJSResources/react-webpack-babel#readme",
   "dependencies": {
+    "copy-webpack-plugin": "^4.4.1",
     "get-sheet-done": "^0.1.4",
     "lodash.debounce": "^4.0.8",
     "material-ui": "^0.20.0",
