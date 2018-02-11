@@ -94,22 +94,12 @@ class App extends Component {
 			          <a href="/" className="dib w2 h2 pa1 ba b--white-90 grow-large border-box">
 			          </a>
 			        </div>
-			        {/* <div className="dtc v-mid tr pa3">
-			          <a className="f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="/" >How it Works</a>
-			          <a className="f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="/" >Pricing</a>
-			          <a className="f6 fw4 hover-white no-underline white-70 dn dib-l pv2 ph3" href="/" >About</a>
-			          <a className="f6 fw4 hover-white no-underline white-70 dn dib-l pv2 ph3" href="/" >Careers</a>
-			          <a className="f6 fw4 hover-white no-underline white-70 dib ml2 pv2 ph3 ba" href="/" >Sign Up</a>
-			        </div> */}
 			      </nav>
 			      <div className="tc mt2 mt3-m mt4-l ph3">
 			        <h1 className={`f2 f1-l fw2 ${fontColorA} mb0 lh-title`}>GoodBlocks</h1>
 			        <h2 className={`fw1 f3 ${fontColorB} mt3`}>Browse Blockchain for Social Good Projects from the Master List</h2>
-			        <h3 className={`fw1 f5 ${fontColorB}`}>Made with ❤️ by Vessels Tech</h3>
-							<a className={`fw1 f6 ${fontColorB}`} href="https://vesselstech.com">vesselstech.com</a>
-			        {/* <a className="f6 no-underline grow dib v-mid bg-blue white ba b--blue ph3 pv2 mb3" href="/">Call to Action</a> */}
-			        {/* <span className="dib v-mid ph3 white-70 mb3">or</span> */}
-			        {/* <a className="f6 no-underline grow dib v-mid white ba b--white ph3 pv2 mb3" href="">Secondary call to action</a> */}
+			        <h2 className={`fw1 f3 ${fontColorB} mt3`}>Crowdsourced from the <a className={`fw1 ${fontColorB}`} href="https://docs.google.com/spreadsheets/d/14BPQIqnDUTyinkp9eJ7bwYwsg22RJz0AVU9vOSSU94o/edit#gid=1835238919">Google Doc</a></h2>
+			        <h3 className={`fw1 f5 ${fontColorB}`}>Made with ❤️ by Vessels Tech | <a className={`fw1 f6 ${fontColorB}`} href="https://vesselstech.com">vesselstech.com</a></h3>
 			      </div>
 			    </div>
 			  </div>
@@ -243,7 +233,7 @@ class App extends Component {
 		if (!list) {
 			return (
 				//TODO: make pretty
-				<section className={`${domColor} mw-80-ns w-80-ns center mt4`}>
+				<section className={`${domColor} mw-80-ns w-80-ns center mv4 h4`}>
 					<div
 						className="mw1 mw1-ns center"
 						style={{position:'relative'}}
@@ -334,6 +324,20 @@ class App extends Component {
 		);
 	}
 
+	getSupportSection() {
+
+		return (
+			<section className="sans-serif">
+				<div className="tc mt2 mt3-m mt4-l ph3">
+					<h3 className={`fw1 f5 ${fontColorB}`}>Please support further development of this site:</h3>
+					<h3 className={`fw1 f5 ${fontColorB}`}><b>BTC:</b> 18yH2czzkyv4j1FXEY3KKSWSjCm56bmgES</h3>
+					<h3 className={`fw1 f5 ${fontColorB}`}><b>ETH:</b> 0xb85b76189226b25884c225185805b90d53a8779e</h3>
+				</div>
+
+			</section>
+		);
+	}
+
 	closePopup() {
 		this.setState({
 			selected: -1,
@@ -381,23 +385,32 @@ class App extends Component {
 		const row = filteredList[selected];
 
 		const customStyles = {
-			  content : {
-			    top: '50%',
-			    left: '50%',
-			    right: 'auto',
-			    bottom: 'auto',
-			    marginRight: '-50%',
-			    transform: 'translate(-50%, -50%)',
-					padding: '0',
-					width: '80%',
-					borderWidth: '0',
-					border: 'none'
-			  }
-			};
+			overlay: {
+	      position: 'fixed',
+	      top: 0,
+	      left: 0,
+	      right: 0,
+	      bottom: 0,
+	      backgroundColor: 'rgba(1, 1, 1, 0.35)'
+	    },
+		  content : {
+		    top: '50%',
+		    left: '50%',
+		    right: 'auto',
+		    bottom: 'auto',
+		    marginRight: '-50%',
+		    transform: 'translate(-50%, -50%)',
+				padding: '0',
+				width: '80%',
+				borderWidth: '0',
+				border: 'none',
+				overflow: 'auto',
+		 		WebkitOverflowScrolling: 'touch',
+		  }
+		};
 
 		return (
 			<Modal
-				// className="top-50 left-50 mw6-ns w6-ns mw5 w5"
         isOpen={this.state.showPopup}
         onRequestClose={() => this.closePopup()}
         contentLabel="Example Modal"
@@ -411,11 +424,12 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className='App'>
+			<div className='App bg-lightest-blue'>
 				{/* <Navigation/> */}
 				{this.getHeader()}
 				{this.getSearchBar()}
 				{this.getList()}
+				{this.getSupportSection()}
 				{this.getPopup()}
 			</div>
 		);

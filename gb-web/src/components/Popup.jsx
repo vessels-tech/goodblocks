@@ -50,28 +50,24 @@ class Popup extends Component {
 			tech,
 		} = this.props;
 
-		const outerStyle = {};
-
 		const primarySectorFormatted = this.formatOrPlaceholder(industry);
 		const techFormatted = this.formatOrPlaceholder(tech);
 		const statusFormatted = this.formatOrPlaceholder(projectStatus);
 		const emailFormatted = this.formatOrPlaceholder(contactEmail);
 
 		return (
-			<div style={outerStyle} className="sans-serif w-100 h-100">
-				<article className="center ba">
+			<div className="sans-serif w-100 h-100 bg-near-white">
 				  <h1 className="fw3 f4 bg-near-white black-60 mv0 pv2 ph3">{orgInit}</h1>
-					<div className="fl w-100 w-50-ns pa4 bb b--black-10">
-						<p className="fw5 f6 f5-ns lh-copy measure">{description}</p>
+					<div className="fl w-100 w-50-ns pa4 b">
+						<p className="fw6 f6 f5-ns lh-copy measure">{description}</p>
 					</div>
-					<div className="fl w-100 w-50-ns pa4">
+					<div className="fl w-100 w-50-ns pa4 ">
 						<p><b>Primary Sector:</b> {primarySectorFormatted}</p>
 						<p><b>Tech:</b> {techFormatted}</p>
 						<p><b>Status:</b> {statusFormatted}</p>
 						<p><b>Links:</b> {this.getLinkField()}</p>
 						<p><b>Email:</b> {emailFormatted}</p>
 					</div>
-				</article>
 			</div>
 		);
 	}
