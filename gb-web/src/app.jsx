@@ -348,11 +348,19 @@ class App extends Component {
 
 		return (
 			<Popup
-				id={row.id}
 				uniqueId={row.uniqueId}
-				description={row.description}
-				companyName={row.companyName}
 				orgInit={row.orgInit}
+				id={row.id}
+				companyName={row.companyName}
+				projectName={row.projectName}
+				region={row.region}
+				industry={row.industry}
+				targetMarket={row.targetMarket}
+				description={row.description}
+				tech={row.tech}
+				projectStatus={row.projectStatus}
+				link={row.link}
+				contactEmail={row.contactEmail}
 			/>
 		);
 	}
@@ -381,7 +389,9 @@ class App extends Component {
 			    marginRight: '-50%',
 			    transform: 'translate(-50%, -50%)',
 					padding: '0',
-					width: '80%'
+					width: '80%',
+					borderWidth: '0',
+					border: 'none'
 			  }
 			};
 

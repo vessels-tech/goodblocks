@@ -3,28 +3,74 @@ import PropTypes from 'prop-types';
 
 class Popup extends Component {
 
-	render() {
-		const { orgInit, industry, description, link} = this.props;
 
-		// const outerStyle = {
-		// 	position: 'fixed',
- 		// 	width: '100%',
- 		// 	height: '100%',
- 		// 	top: 0,
- 		// 	left: 0,
- 		// 	right: 0,
- 		// 	bottom: 0,
- 		// 	margin: 'auto',
-		// };
-		const outerStyle = {};
+	formatOrPlaceholder = (field) => {
+		if (field === null) {
+			return '-';
+		}
+
+		if (field.length === 0 ) {
+			return '-';
+		}
+
+		return field;
+	}
+
+	getLinkField() {
+		const { link } = this.props;
+
+		if (this.formatOrPlaceholder(link) === '-') {
+			return '-'
+		}
+
+		const maybeValidLink = link
+			.replace("https://", '')
+			.replace("http://", '');
+
+		console.log(maybeValidLink);
 
 		return (
-			<div style={outerStyle} className="sans-serif w-100 h-100 bg-black-10">
+			<a href={`https://${maybeValidLink}`}>{link}</a>
+		);
+	}
+
+	render() {
+		const {
+			uniqueId,
+			companyName,
+			orgInit,
+			projectName,
+			region,
+			industry,
+			targetMarket,
+			description,
+			projectStatus,
+			link,
+			contactEmail,
+			tech,
+		} = this.props;
+
+		const outerStyle = {};
+
+		const primarySectorFormatted = this.formatOrPlaceholder(industry);
+		const techFormatted = this.formatOrPlaceholder(tech);
+		const statusFormatted = this.formatOrPlaceholder(projectStatus);
+		const emailFormatted = this.formatOrPlaceholder(contactEmail);
+
+		return (
+			<div style={outerStyle} className="sans-serif w-100 h-100">
 				<article className="center ba">
-				  <h1 className="f4 bg-near-white black-60 mv0 pv2 ph3">{orgInit}</h1>
-				  <div className="pa3 bt b--black-10">
-				    <p className="f6 f5-ns lh-copy measure">{description}</p>
-				  </div>
+				  <h1 className="fw3 f4 bg-near-white black-60 mv0 pv2 ph3">{orgInit}</h1>
+					<div className="fl w-100 w-50-ns pa4 bb b--black-10">
+						<p className="fw5 f6 f5-ns lh-copy measure">{description}</p>
+					</div>
+					<div className="fl w-100 w-50-ns pa4">
+						<p><b>Primary Sector:</b> {primarySectorFormatted}</p>
+						<p><b>Tech:</b> {techFormatted}</p>
+						<p><b>Status:</b> {statusFormatted}</p>
+						<p><b>Links:</b> {this.getLinkField()}</p>
+						<p><b>Email:</b> {emailFormatted}</p>
+					</div>
 				</article>
 			</div>
 		);
@@ -44,6 +90,7 @@ Popup.propTypes = {
 	projectStatus: PropTypes.string,
 	link: PropTypes.string,
 	contactEmail: PropTypes.string,
+	tech: PropTypes.string,
 	onDismissPopup: PropTypes.func,
 }
 

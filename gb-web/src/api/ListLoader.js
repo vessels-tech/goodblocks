@@ -12,6 +12,7 @@ const rowFormat = {
 	industry: 4,
 	targetMarket: 5,
 	description: 6,
+	tech: 7,
 	projectStatus: 8,
 	link: 9,
 	contactEmail: 10
@@ -36,6 +37,7 @@ const extractDataFromRow = (row) => {
 		industry: row[rowFormat.industry] || null,
 		targetMarket: row[rowFormat.targetMarket] || null,
 		description: row[rowFormat.description] || null,
+		tech: row[rowFormat.tech] || null,
 		projectStatus: row[rowFormat.projectStatus] || null,
 		link: row[rowFormat.link] || null,
 		contactEmail: row[rowFormat.contactEmail] || null,
